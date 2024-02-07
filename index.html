@@ -120,6 +120,9 @@
             <p><br><br><br>
                 <span class="copied-message" id="copiedMessage">Copied!</span>
             </p>
+
+            <!-- Add a button to open the resume PDF -->
+            <button class="btn btn-primary btn-shadow btn-lg" onclick="openResume()">My Resume</button>
         </div>
     </div>
     <div id="side-search" class="sidenav">
@@ -181,6 +184,7 @@
                     <h2 class="section-title">
                         Just a glimpse of me and my personal life. <br> For my technical background, do visit my GitHub
                         @<a href="https://github.com/Mubashir42884" target="_blank">Mubashir42884</a>
+                    </br>And for my resume, <a href="img/Resume.pdf" target="_blank">click here</a>
                     </h2>
                     <p class="muba-h6">I am Mubashir Mohsin. A computer and tech enthusiast. A researcher in the domain
                         of Artificial Intelligence. <br> My contacts can be found <a href="contacts.html"
@@ -475,7 +479,7 @@
                 <!-- Section Title -->
                 <div class="title-wrap">
                     <h2 class="muba-h1">MY SHOWCASE</h1>
-                    <p class="muba-h4">Here I will add my research details and previously worked papers and projects.<br>Also add project GitHub Links and details.<br> In future I will add the links of publications too.</p>
+                    <p class="muba-h4">Showcasing my most recent works.<br> In future I will my publications too.</p>
                 </div>
                 <!-- End of Section Title -->
                 <div class="row">
@@ -496,19 +500,19 @@
                             <!-- Portfolio Item -->
                             <div class="grid-item minimalism" data-aos="fade-up">
                                 <div class="grid-item-wrapper">
-                                    <img src="img/add.jpg" alt="portfolio-img" class="portfolio-item">
+                                    <img src="img/DeepFER.jpg" alt="portfolio-img" class="portfolio-item">
                                     <div class="grid-info">
                                         <div class="grid-link d-flex justify-content-center">
-                                            <a class="img-pop" data-rel="lightcase" href="img/add.jpg"
-                                                title="title">
+                                            <a class="img-pop" data-rel="lightcase" href="img/DeepFER.jpg"
+                                                title="Facial Expression Recognition with Deep Neural Network and Attentional Convolutional Network">
                                                 <span class="lnr lnr-move"></span>
                                             </a>
-                                            <a class="ext-link" href="#" target="_blank">
+                                            <a class="ext-link" href="https://github.com/Mubashir42884/DeepFER-Facial-Expression-Recognition-with-Deep-Neural-Network-and-Attentional-Convolutional-Network" target="_blank">
                                                 <span class="lnr lnr-link"></span>
                                             </a>
                                         </div>
                                         <div class="grid-title">
-                                            <h4>Image 1</h4>
+                                            <h4>DeepFER</h4>
                                         </div>
                                     </div>
 
@@ -518,18 +522,18 @@
                             <!-- Portfolio Item -->
                             <div class="grid-item vintage" data-aos="fade-up">
                                 <div class="grid-item-wrapper">
-                                    <img src="img/add.jpg" alt="portfolio-img" class="portfolio-item">
+                                    <img src="img/90MinsStat.jpg" alt="portfolio-img" class="portfolio-item">
                                     <div class="grid-info">
                                         <div class="grid-link d-flex justify-content-center">
-                                            <a class="img-pop" data-rel="lightcase" href="img/add.jpg" title="title">
+                                            <a class="img-pop" data-rel="lightcase" href="img/90MinsStat.jpg" title="90MinsSTAT: Football Statistics WebApp using Web Scraping with R">
                                                 <span class="lnr lnr-move"></span>
                                             </a>
-                                            <a class="ext-link" href="#" target="_blank">
+                                            <a class="ext-link" href="https://github.com/Mubashir42884/90MinsStat-Football-Statistics-WebApp-using-R" target="_blank">
                                                 <span class="lnr lnr-link"></span>
                                             </a>
                                         </div>
                                         <div class="grid-title">
-                                            <h4>Image 2</h4>
+                                            <h4>90MinsSTAT</h4>
                                         </div>
                                     </div>
 
@@ -682,7 +686,7 @@
                                 Message Me
                             </h2>
                         </div>
-                        <form method="post" name="contact-us" action="">
+                        <form action="https://submit-form.com/s4jZP54M1" method="POST" name="contact-us">
                             <div class="row">
                                 <div class="col-md-12 form-group">
                                     <input type="text" class="form-control" id="name" name="name" placeholder="Name">
@@ -691,7 +695,7 @@
                                     <input type="text" class="form-control" id="email" name="email" placeholder="Email">
                                 </div>
                                 <div class="col-md-12 form-group">
-                                    <input type="number" class="form-control" id="phoneNumber" name="phoneNumber"
+                                    <input type="number" class="form-control" id="phoneNumber" name="phone"
                                         placeholder="Phone">
                                 </div>
                                 <div class="col-md-12 form-group">
@@ -699,7 +703,7 @@
                                         placeholder="Your Message ..."></textarea>
                                 </div>
                                 <div class="col-md-12 text-center">
-                                    <button class="btn btn-primary btn-shadow btn-lg" type="submit" name="submit">Send
+                                    <button class="btn btn-primary btn-shadow btn-lg" type="submit" name="submit" onclick="saveMessage()">Send
                                         Message</button>
                                 </div>
                             </div>
@@ -708,7 +712,7 @@
                 </div>
                 <div class="col-lg-4 offset-lg-1" data-aos="fade-left">
                     <h2 class="muba-h2">
-                        Inviting people to contact me.
+                        I warmly wlecome people to get in touch with me.
                     </h2>
                     <p class="muba-h4">For public communication and messages.</p>
 
@@ -742,8 +746,11 @@
             <div class="section-content" data-aos="fade-up">
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <h2 class="muba-h2-Q">An inspiring quote at the end</h2>
-                        <p class="muba-h5">Some motivational captions and suggestion.</p>
+                        <h2 class="muba-h2-Q">"The good life is one inspired by love and guided by knowledge."</h2>
+                        <p class="muba-h5"><b>~ Bertrand Russell</b></p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-balloon-heart-fill hidden" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8.49 10.92C19.412 3.382 11.28-2.387 8 .986 4.719-2.387-3.413 3.382 7.51 10.92l-.234.468a.25.25 0 1 0 .448.224l.04-.08c.009.17.024.315.051.45.068.344.208.622.448 1.102l.013.028c.212.422.182.85.05 1.246-.135.402-.366.751-.534 1.003a.25.25 0 0 0 .416.278l.004-.007c.166-.248.431-.646.588-1.115.16-.479.212-1.051-.076-1.629-.258-.515-.365-.732-.419-1.004a2.376 2.376 0 0 1-.037-.289l.008.017a.25.25 0 1 0 .448-.224l-.235-.468ZM6.726 1.269c-1.167-.61-2.8-.142-3.454 1.135-.237.463-.36 1.08-.202 1.85.055.27.467.197.527-.071.285-1.256 1.177-2.462 2.989-2.528.234-.008.348-.278.14-.386Z"/>
+                        </svg> 
                         <button id="reactionBtn" type="button" class="btn btn-outline-primary">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
@@ -859,7 +866,15 @@
             reactionBtn.classList.toggle('clicked');
         });
 
-        
+
+
+        function openResume() {
+        var link = document.createElement('a');
+        link.href = 'img/Resume.pdf';
+        link.target = '_blank';
+        link.download = 'img/Resume.pdf';
+        link.click();
+    }
 
         document.addEventListener("DOMContentLoaded", function () {
         const progressBarElements = document.querySelectorAll('.progress-bar');
