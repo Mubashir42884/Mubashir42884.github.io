@@ -1,7 +1,4 @@
-/*
- * Roxy: Bootstrap template by GettTemplates.com
- * https://gettemplates.co/roxy
- */
+
 html, body {
   width: 100%;
   overflow-x: hidden; }
@@ -25,6 +22,18 @@ h6,
   font-family: 'Work Sans', sans-serif;
   margin-top: 0; }
 
+
+  @font-face {
+    font-family: 'Quicksand'; /* Define a single font family name */
+    src: url('Quicksand-VariableFont_wght.ttf') format('truetype'); /* Include TTF format */
+  }
+  
+  @font-face {
+    font-family: 'Lemon Milk'; /* Define another font family name */
+    src: url('LEMONMILK-Bold.otf') format('opentype'), /* Include OTF format */
+         url('LEMONMILK-Regular.otf') format('opentype'); /* Include OTF format */
+  }
+  
   
 
 .muba {
