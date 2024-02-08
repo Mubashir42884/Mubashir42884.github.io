@@ -1,11 +1,14 @@
 
 html, body {
   width: 100%;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+}
 
 body {
   font-family: 'Lato', sans-serif;
-  font-weight: 300; }
+  font-weight: 300;
+  font-size: 16px; /* Adjust font size for better readability on mobile */
+}
 
 h1,
 h2,
@@ -19,109 +22,92 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: 'Work Sans', sans-serif;
-  margin-top: 0; }
-
-
-  @font-face {
-    font-family: 'Quicksand'; /* Define a single font family name */
-    src: url('Quicksand-VariableFont_wght.ttf') format('truetype'); /* Include TTF format */
-  }
-  
-  @font-face {
-    font-family: 'Lemon Milk'; /* Define another font family name */
-    src: url('LEMONMILK-Bold.otf') format('opentype'), /* Include OTF format */
-         url('LEMONMILK-Regular.otf') format('opentype'); /* Include OTF format */
-  }
-  
-  
+  margin-top: 0;
+}
 
 .muba {
   font-family: 'Lemon Milk', sans-serif;
-  font-size: 28px;
-  letter-spacing: 2px; /* Custom letter spacing */
-  background: linear-gradient(45deg, #c0eaff, #b5ffd0);
-  -webkit-background-clip: text;
-  color: transparent;
+  font-size: 24px; /* Adjust font size for mobile */
+  letter-spacing: 1px; /* Adjust letter spacing for better readability */
   transition: all 0.5s ease;
 }
 
 .muba:hover{
-  font-family: 'Lemon Milk', sans-serif;
-  font-size: 36px;
-  color: #000000;
-  letter-spacing: 2px;
-}
-.muba-h6{
-  font-family: 'Quicksand', sans-serif;
-  font-size: 14px;
-  font-weight: bold;
+  font-size: 30px; /* Increase font size on hover for better visibility */
 }
 
-.muba-h5{
-  font-family: 'Quicksand', sans-serif;
-  font-size: 16px;
-  font-weight: bold;
-}
-.muba-h4{
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 800;
-  font-size: 18px;
-}
-.muba-h4-center{
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 800;
-  font-size: 18px;
-  text-align: center;
-}
-.muba-h3{
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 800;
-  font-size: 22px;
-}
-.muba-h2-Q{
-  font-family: 'Quicksand', sans-serif;
-  font-size: 28px;
+.muba-form {
+  font-family: 'Quicksand';
+  font-size: 20px; /* Adjust font size for mobile */
   font-weight: 900;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
-.muba-h2{
-  font-family: 'Lemon Milk', sans-serif;
-  font-size: 30px;
+
+.muba-h6 {
+  font-family: 'Quicksand';
+  font-size: 18px; /* Adjust font size for mobile */
+  font-weight: 800;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
-.muba-h1{
-  font-family: 'Lemon Milk', sans-serif;
-  font-size: 52px;
+.muba-h5{
+  font-family: 'Quicksand';
+  font-size: 16px; /* Adjust font size for mobile */
+  font-weight: 800;
 }
-.muba-quote{
+.muba-h4,
+.muba-h4-center,
+.muba-h3 {
+  font-family: 'Quicksand';
+  font-size: 26px; /* Adjust font size for mobile */
+  font-weight: 800;
+}
+
+.muba-h2-Q {
+  font-family: 'Lemon Milk';
+  font-size: 28px; /* Adjust font size for mobile */
+  font-weight: 800;
+}
+
+.muba-h2,
+.muba-h1,
+.muba-quote {
   font-family: 'Lemon Milk', sans-serif;
-  font-size: 90px;
+  font-size: 38px; /* Adjust font size for mobile */
+  font-weight: 800;
+}
+
+.muba-h1-section{
+  font-family: 'Lemon Milk', sans-serif;
+  font-size: 54px; /* Adjust font size for mobile */
+  font-weight: 800;
 }
 
 /* Add some basic styling to provide visual feedback */
 .email-link {
-  cursor: pointer;
   color: #c3a9ff;
-  text-decoration:wavy;
+  text-decoration: underline;
   transition: all 0.3s ease;
 }
+
 .email-link:hover {
-  cursor: pointer;
   color: #deffa9;
-  text-decoration:wavy;
   font-weight: 800;
 }
 
+
 .copied-message {
   display: none;
-  background: linear-gradient(45deg, #c0eaff, #b5ffd0);
-  background-size: auto;
-  font-size: 20px;
+  background: none; /* Set background to transparent */
+  font-size: 12px;
   font-weight: 800;
-  text-align:center;
-  color: rgb(0, 0, 0);
+  text-align: center;
+  color: #b5ffd0;
   margin: 1px;
   padding: 5px; /* Adjust padding as needed */
   border-radius: 12px; /* Rounded corners */
+  border: 3px solid #b5ffd0; /* Add border */
   position: absolute;
   top: 100%;
   left: 50%;
@@ -129,21 +115,48 @@ h6,
   transition: all 0.8s ease;
 }
 
-img {
-  max-width: 100%;
-  height: 400px;
-  transition: all 0.6s ease; /* Smooth transition for effects */
+
+.copied-message::before {
+  content: ''; /* Create pseudo-element */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit; /* Inherit border radius from parent */
+  background: none;
+  z-index: -1; /* Place behind text */
 }
 
-img-responsive img{
-  height: 30px;
+.copied-message p {
+  font-size: 12px;
+  font-weight: 800;
+  text-align: center;
+  margin: 0;
+  padding: 10px; /* Adjust padding as needed */
+}
+
+
+img {
+  max-width: 100%;
+  height: auto; /* Ensure images maintain aspect ratio */
+  transition: all 0.6s ease;
+}
+.img-portfolio {
+  height: auto; /* Ensure images maintain aspect ratio */
+  transition: all 0.6s ease;
+  padding-right: 3px;
 }
 
 .muba-img img {
-  height: 300px;
+  height: auto; /* Ensure images maintain aspect ratio */
+  max-height: 300px; /* Limit image height for better display on smaller screens */
   transition: all 0.8s ease;
   content: url("../img/MUBA-1200-tsp.png");
 }
+
+
+/*-----------------#################################################*/
 
 .muba-img img:hover {
   height: 600px;
@@ -155,57 +168,86 @@ img-responsive img{
 
 html, body {
   width: 100%;
-  overflow-x: hidden; }
-
+  overflow-x: hidden;
+}
 
 a {
   color: #b70257;
-  transition: all .3s ease-in-out; }
+  transition: all .3s ease-in-out;
+  text-decoration: none; /* Ensure links don't have underline by default */
+}
 
 a:focus,
 button:focus {
-  outline: none; }
+  outline: none;
+}
 
 .btn:hover,
 a:hover {
-  text-decoration: none;
-  color: #4f1ab8; }
+  color: #4f1ab8;
+}
 
 img {
-  max-width: 100%; }
+  max-width: 100%;
+}
 
 .bg-fixed {
-  background-size: cover; }
+  background-size: cover;
+}
 
 .bg-grey {
-  background-color: #f7f8f9; }
+  background-color: #f7f8f9;
+}
 
 .fs-40 {
-  font-size: 40px; }
+  font-size: 40px;
+}
 
 .fs-20 {
-  font-size: 20px; }
+  font-size: 20px;
+}
 
 section {
-  position: relative; }
+  position: relative;
+}
 
 .section-content {
-  padding-top: 50px;
-  padding-bottom: 80px; }
+  padding-top: 30px; /* Adjust padding for better spacing */
+  padding-bottom: 50px; /* Adjust padding for better spacing */
+}
 
 .title-wrap,
 .section-title {
-  font-size: 25px;
-  text-align: center; }
-
+  font-size: 20px; /* Adjust font size for mobile */
+  text-align: center;
+}
 
 .invisible-box {
-  padding-left: 10px;
-  padding-right: 100px;
+  padding-left: 0px;
+  padding-right: 10px;
   font-family: Quicksand, sans-serif;
   font-weight: 800;
   text-align:inherit;
-  height: 700px;
+  
+  width: 550px;
+  overflow: hidden;
+}
+.invisible-box-2{
+  padding-left: 10px;
+  padding-right: 10px;
+  font-family: Quicksand, sans-serif;
+  font-weight: 800;
+  text-align:inherit;
+  width: 550px;
+  overflow: hidden;
+}
+.invisible-box-3{
+  padding-left: 70px;
+  padding-right: 10px;
+  font-family: Quicksand, sans-serif;
+  font-weight: 800;
+  text-align:inherit;
+  width: 550px;
   overflow: hidden;
 }
 
@@ -217,16 +259,30 @@ section {
   height: 85%;
   padding-top: 35px;
 }
+.content-img-purpose{
+  height: 85%;
+  padding-top: 35px;
+}
+.content-img-skill {
+  height: 60%;
+  padding-top: 50px;
+  padding-bottom: 100px;
+}
 .content-img-setup {
-  height: 100%;
+  height: 20%;
   padding-top: 35px;
   padding-right: 50px;
 }
 
-
+.content-img-setup-skill{
+  height: 2%;
+  padding-top: 35px;
+  padding-right: 50px;
+}
 
 .shadow {
-  box-shadow: 0 20px 40px 0 rgba(42, 51, 62, 0.56), 0 2px 4px 0 rgba(104, 132, 170, 0.378) !important; }
+  box-shadow: 0 10px 20px 0 rgba(42, 51, 62, 0.56), 0 1px 2px 0 rgba(104, 132, 170, 0.378) !important; /* Adjust box-shadow for better appearance */
+}
 
 #header-navbar {
   position: absolute;
@@ -234,27 +290,26 @@ section {
   right: 0;
   left: 0;
   z-index: 11;
-  transition: all 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86); }
+  transition: all 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
 
 .navbar-brand {
-  font-size: 40px;
-  font-family: Lemon Milk;
-  color: #000; }
+  font-size: 30px; /* Adjust font size for mobile */
+  color: #000;
+}
 
 .navbar-nav .nav-link {
   color: #fff;
-  font-family: Lemon Milk;
-  transition: all 0.2s ease-in-out; }
-
-/* Add margin between navbar items */
-.navbar-nav li {
-  margin-right: 15px;
-  margin-left: 15px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  transition: all 0.2s ease-in-out;
 }
 
-/* On hover styles for navbar items */
+.navbar-nav li {
+  margin-right: 10px; /* Adjust margin for better spacing */
+  margin-left: 10px; /* Adjust margin for better spacing */
+  margin-top: 5px; /* Adjust margin for better spacing */
+  margin-bottom: 5px; /* Adjust margin for better spacing */
+}
+
 .navbar-nav:hover li a {
   opacity: 0.6;
 }
@@ -264,13 +319,9 @@ section {
   font-size: 18px;
   color: #000;
   font-weight: 500;
-  font-family: 'Lemon Milk', sans-serif;
 }
 
-.navbar-toggler {
-  font-size: 1rem;
-  font-family: Lemon Milk;
-  color: #fff; }
+/*#######################################*/
 
 .jumbotron {
   color: #fff;
@@ -356,6 +407,21 @@ section {
   padding: 5px 30px;
   text-transform: capitalize;
   transition: all 0.3s ease; }
+
+.btn-filter a.active {
+  background-color: #b70257; /* Change background color for active state */
+  color: white; /* Change text color for active state */
+  border-radius: 20px;
+  padding: 5px 15px;
+  border-color: whitesmoke; /* Change border color for active state */
+}
+.btn-filter a.active:hover {
+  background-color: #b5ffd0; /* Change background color for active state */
+  color: #b70257; /* Change text color for active state */
+  border-color: #b70257; /* Change border color for active state */
+  transition: all 0.7s ease;
+}
+
 
 .btn-primary {
   display: inline-block;
@@ -772,22 +838,24 @@ section {
 
 .grid-link a {
   margin: 5px;
-  font-size: 20px;
+  font-family: 'Quicksand';
+  font-weight: 500px;
+  font-size: 28px;
   color: #000; }
 
 .grid-portfolio {
   overflow: hidden; }
 
 .gutter-sizer {
-  width: 2%; }
+  width: 45%; }
 
 .grid-sizer,
 .grid-item {
-  width: 32%; }
+  width: 30%; }
 
 .grid-item {
   margin-bottom: 20px;
-  border-radius: 5px;
+  border-radius: 15px;
   overflow: hidden; }
   .grid-item:hover .grid-info {
     top: 50%;
@@ -821,6 +889,9 @@ section {
   font-family: "Linearicons-Free"; }
 
 .grid-title {
+  font-family: 'Quicksand';
+  font-weight: 800px;
+  font-size: 28px;
   text-align: center; }
 
 /*=====  End of PORTFOLIO  ======*/
@@ -1011,7 +1082,6 @@ section {
     margin-bottom: 0; }
 
 .blog-share-wrapper {
-  float: right;
   display: inline-block;
   margin: 0 -5px; }
   .blog-share-wrapper .blog-share {
