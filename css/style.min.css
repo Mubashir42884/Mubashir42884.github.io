@@ -144,7 +144,7 @@ img {
 }
 .img-portfolio {
   height: auto; /* Ensure images maintain aspect ratio */
-  transition: all 0.6s ease;
+  transition: all 2.6s ease;
   padding-right: 3px;
 }
 
@@ -822,6 +822,23 @@ section {
 /*=================================
 =            PORTFOLIO            =
 =================================*/
+
+/* Hide the text by default */
+.icon-text {
+  display: none;
+}
+
+/* Show the text on hover */
+.svg-container {
+  position: center;
+}
+.svg-container:hover .icon-text {
+  display: block;
+}
+.svg-title {
+  font-weight: 800;
+}
+
 .filter-button-group {
   margin-bottom: 15px;
   font-family: 'Quicksand', sans-serif;
@@ -847,7 +864,7 @@ section {
   overflow: hidden; }
 
 .gutter-sizer {
-  width: 45%; }
+  width: 50%; }
 
 .grid-sizer,
 .grid-item {
@@ -859,18 +876,18 @@ section {
   overflow: hidden; }
   .grid-item:hover .grid-info {
     top: 50%;
-    opacity: 1; }
+    opacity: 50; }
 
 .grid-item-wrapper:before {
   content: '';
   display: block;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.85);
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  transition: all .3s ease;
+  transition: .3s ;
   opacity: 0; }
 
 .grid-item-wrapper:hover:before {
@@ -882,7 +899,7 @@ section {
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 0;
-  transition: all .3s ease; }
+  transition: all .9s ease; }
 
 .lightcase-icon-close:before {
   content: '\e870';
@@ -1199,7 +1216,7 @@ section {
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     padding: 10px; } }
 
-@media (max-width: 767px) {
+@media (max-width: 780px) {
   .jumbotron h1 {
     font-size: 6rem; }
   .grid-item {
