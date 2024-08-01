@@ -97,6 +97,94 @@ h6,
 }
 
 
+    .social-icons {
+        margin-top: 20px;
+        size: 50px;
+    }
+
+    .social-icons a {
+        text-decoration: none;
+        color: #333;
+        margin: 0 10px;
+        font-size: 50px;
+    }
+
+    .social-icons a:hover {
+      font-size: 40px;
+      transition: all 0.3s ease;
+    }
+
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 10000; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content */
+.modal-content {
+  z-index: 10001;
+  background-color: #fefefe;
+  margin: 5% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 600px; /* Could be more or less, depending on screen size */
+  height: 300px;
+  position: relative;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Centering content inside modal */
+.modal-content h2, .modal-content p, .modal-content ul {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+/* Social Icons */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.social-icons a {
+  text-decoration: none;
+  color: #333;
+  margin: 0 10px;
+  font-size: 24px;
+}
+
+.social-icons a:hover {
+  color: #007bff; /* Change this to the color you want on hover */
+}
+
+
+
 .copied-message {
   display: none;
   background: none; /* Set background to transparent */
@@ -153,12 +241,14 @@ img {
   max-height: 300px; /* Limit image height for better display on smaller screens */
   transition: all 0.8s ease;
   content: url("../img/MUBA-1200-tsp.png");
+  z-index: 500;
 }
 
 
 /*-----------------#################################################*/
 
 .muba-img img:hover {
+  z-index: 500;
   height: 600px;
   transition: all 0.8s ease-in;
   content: url("MUBA-1200-grd.gif");

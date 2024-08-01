@@ -3,6 +3,11 @@
 
 <head>
 
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" href="img/MUBA-20.png" type="image/x-icon">
@@ -48,13 +53,13 @@
                         <a class="nav-link" href="index.html"><b>HOME</b></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href=""><b>ABOUT</b></a>
+                        <a class="nav-link" href="#glimpse-of-me"><b>ABOUT</b></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href=""><b>SOCIALS</b></a>
+                        <a class="nav-link" href="#" id="open-socials-modal"><b>SOCIALS</b></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href=""><b>CONTACT</b></a>
+                        <a class="nav-link" href="#" id="open-contacts-modal"><b>CONTACT</b></a>
                     </li>
                     <li class="nav-item">
                         <a id="side-search-open" class="nav-link" href="#">
@@ -70,6 +75,43 @@
             </div>
         </div>
     </nav>
+
+
+    <!-- Socials Modal -->
+<div id="socials-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 class="muba-h2" align="center">Socials</h2>
+        <!-- Add your social information here -->
+        <p class="muba-h6">Follow me on social media:</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/mubashirmohsin.porom" target="_blank"><i class="fa-brands fa-facebook fa-2xl" style="color: #1a69fd;"></i></a>
+            <a href="https://www.x.com/Mubashir42884" target="_blank"> <i class="fa-brands fa-twitter fa-2xl" style="color: #000000;"></i></a>
+            <a href="https://www.instagram.com/non_traceable_entity/" target="_blank"><i class="fa-brands fa-square-instagram fa-2xl" style="color: #cb05b4;"></i></a>
+            <a href="https://www.reddit.com/user/Feeling_Sun9607" target="_blank"><i class="fa-brands fa-reddit-alien fa-2xl" style="color: #ff4000;"></i></a>
+            <a href="https://github.com/Mubashir42884/" target="_blank"><i class="fa-brands fa-github fa-2xl" style="color: #1e2232;"></i></a>
+            <a href="https://www.linkedin.com/in/mubashir-mohsin/" target="_blank"><i class="fa-brands fa-linkedin fa-2xl" style="color: #287cf3;"></i></a>
+        </div>
+    </div>
+</div>
+
+<!-- Contacts Modal -->
+<div id="contacts-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 class="muba-h2" align="center">Contact Information</h2>
+    </br>
+        <!-- Add your contact information here -->
+        <p class="muba-h3">You can reach me at:</p>
+    </br>
+        <p class="muba-h5"><b style="color:#ff4000">Email:</b> <u>mubashir.mohsin.42884@gmail.com</u></p>
+        <p class="muba-h5"><b style="color:#ff4000">Phone:</b> +88 01726331487</p>
+    </div>
+</div>
+
+
+
+
 
     <div id="side-nav" class="sidenav">
         <a href="javascript:void(0)" id="side-nav-close">&times;</a>
@@ -175,21 +217,30 @@
     
     
     <!-- Features Section-->
-    <section id="features" class="bg-white">
+    <section id="glimpse-of-me" class="bg-white">
         <div class="container">
             <div class="section-content">
                 <!-- Section Title -->
                 <div class="title-wrap mb-5" data-aos="fade-up">
                     <h1 class="muba-h1-section">A GLIMPSE OF ME</h1>
+
+
                     <h3 class="muba-h3">
-                        Just a glimpse of me and my personal life. <br> For my technical background, do visit my GitHub
-                        @<a href="https://github.com/Mubashir42884" target="_blank">Mubashir42884</a>
-                    </br>And for my resume, <a href="img/Resume.pdf" target="_blank">click here</a>
+                        For my technical background, do visit my GitHub and LinkedIn
+                        <div class="social-icons">
+                            <a href="https://github.com/Mubashir42884/" target="_blank"><i class="fa-brands fa-github fa-xl" style="color: #1e2232;"></i></a>
+                            <a href="https://www.linkedin.com/in/mubashir-mohsin/" target="_blank"><i class="fa-brands fa-linkedin fa-xl" style="color: #287cf3;"></i></a>
+                        </div>
+                        For my resume, <a href="img/Resume.pdf" target="_blank">click here </a> and my socials, <a href="img/Resume.pdf" target="_blank"> click here!</a>
                     </h3>
-                    <p class="muba-h6">I am Mubashir Mohsin. A computer and tech enthusiast.</br> A researcher in the domain
-                        of Artificial Intelligence. <br> My contacts can be found <a href="contacts.html"
-                            target="_blank"><u>here</u></a> </p>
-                </div>
+                    </br>
+                    <h3 class="muba-h3">
+                        Just a glimpse of me and my personal life.
+                    </h3>
+                    <p class="muba-h6">
+                        I am Mubashir Mohsin. A computer and tech enthusiast.</br> A researcher in the domain
+                        of Artificial Intelligence. <br> My contacts can be found <a href="#" id="open-contacts-modal"><u>here</u></a> 
+                    </p>
                 <!-- End of Section Title -->
                 <div class="row">
                     <!-- Features Holder-->
@@ -943,6 +994,42 @@
             observer.observe(progressBar);
         });
     });
+
+    // Get the modals
+var socialsModal = document.getElementById("socials-modal");
+var contactsModal = document.getElementById("contacts-modal");
+
+// Get the buttons that open the modals
+var openSocialsBtn = document.getElementById("open-socials-modal");
+var openContactsBtn = document.getElementById("open-contacts-modal");
+
+// Get the <span> elements that close the modals
+var closeBtns = document.getElementsByClassName("close");
+
+// When the user clicks on the button, open the modal
+openSocialsBtn.onclick = function() {
+    socialsModal.style.display = "block";
+}
+
+openContactsBtn.onclick = function() {
+    contactsModal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+for (var i = 0; i < closeBtns.length; i++) {
+    closeBtns[i].onclick = function() {
+        this.parentElement.parentElement.style.display = "none";
+    }
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == socialsModal) {
+        socialsModal.style.display = "none";
+    } else if (event.target == contactsModal) {
+        contactsModal.style.display = "none";
+    }
+}
 
 
 
