@@ -53,9 +53,16 @@ h6,
 }
 .muba-h5{
   font-family: 'Quicksand';
+  font-size: 18px; /* Adjust font size for mobile */
+  font-weight: 800;
+}
+
+.muba-h7{
+  font-family: 'Quicksand';
   font-size: 16px; /* Adjust font size for mobile */
   font-weight: 800;
 }
+
 .muba-h4,
 .muba-h4-center,
 .muba-h3 {
@@ -81,6 +88,12 @@ h6,
 .muba-h1-section{
   font-family: 'Lemon Milk', sans-serif;
   font-size: 54px; /* Adjust font size for mobile */
+  font-weight: 800;
+}
+
+.muba-h2-section{
+  font-family: 'Lemon Milk', sans-serif;
+  font-size: 72px; /* Adjust font size for mobile */
   font-weight: 800;
 }
 
@@ -240,7 +253,7 @@ img {
   height: auto; /* Ensure images maintain aspect ratio */
   max-height: 300px; /* Limit image height for better display on smaller screens */
   transition: all 0.8s ease;
-  content: url("../img/MUBA-1200-tsp.png");
+  content: url("../contents/MUBA-1200-tsp.png");
   z-index: 500;
 }
 
@@ -793,6 +806,70 @@ section {
     height: 45px;
     transform: rotate(-40deg); }
 
+
+
+/*===== SOCIALS =====*/
+/*===================*/
+
+.social-page-container {
+  text-align: center;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+.social-header h1 {
+  font-size: 40px;
+  color: #333399;
+  margin-bottom: 10px;
+}
+
+.social-section {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.social-card {
+  width: 180px;
+  height: 180px;
+  background: linear-gradient(135deg, #ff00cc, #333399);
+  color: white;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.social-card a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  padding: 30px;
+  font-size: 24px;
+}
+
+.social-card:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.social-card i {
+  font-size: 50px;
+  margin-bottom: 15px;
+}
+
+.social-card span {
+  display: block;
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/*=====  End of SOCIALS  ======*/
+
+
 /*=====  End of FORM RECTANGLE ETC  ======*/
 /*================================
 =            FEATURES            =
@@ -915,7 +992,7 @@ section {
 
 /* Hide the text by default */
 .icon-text {
-  display: none;
+  display:contents;
 }
 
 /* Show the text on hover */
@@ -961,10 +1038,14 @@ section {
   width: 30%; }
 
 .grid-item {
+  transition: none;
   margin-bottom: 20px;
   border-radius: 15px;
-  overflow: hidden; }
+  overflow:hidden; }
   .grid-item:hover .grid-info {
+    top: 50%;
+    opacity: 50; }
+  .grid-item:hover .grid-info2 {
     top: 50%;
     opacity: 50; }
 
@@ -977,19 +1058,25 @@ section {
   right: 0;
   bottom: 0;
   left: 0;
-  transition: .3s ;
   opacity: 0; }
 
 .grid-item-wrapper:hover:before {
   opacity: 1; }
 
-.grid-info {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  transition: all .9s ease; }
+
+  .grid-info {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0; }
+
+  .grid-info2 {
+    position:absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;}
 
 .lightcase-icon-close:before {
   content: '\e870';
@@ -1000,6 +1087,15 @@ section {
   font-weight: 800px;
   font-size: 28px;
   text-align: center; }
+
+.grid-title2 {
+  font-family: 'Quicksand';
+  font-weight: 800px;
+  font-size: 18px;
+  text-align: center; }
+
+
+
 
 /*=====  End of PORTFOLIO  ======*/
 /*===============================
@@ -1229,7 +1325,7 @@ section {
 =            CLIENT            =
 ==============================*/
 .client-slider-container {
-  position: relative;
+  position: absolute;
 }
 
 .client-slider {
@@ -1242,7 +1338,6 @@ section {
   color: whitesmoke;
   padding-left: 20px;
   padding-right: 20px;
-  transition: opacity 0.5s ease-in-out, border 0.1s ease;
 }
 
 .client-slider-item img {
@@ -1255,6 +1350,8 @@ section {
   border: 3px solid #b5ffd0; /* Change border color as needed */
 }
 
+
+
 /* Owl Carousel Styles */
 .owl-carousel {
   display: flex;
@@ -1263,7 +1360,6 @@ section {
 
 .owl-carousel .owl-stage {
   display: flex;
-  transition: transform 0.3s ease-in-out;
 }
 
 .owl-carousel .owl-item {
