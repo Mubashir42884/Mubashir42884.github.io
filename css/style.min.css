@@ -63,13 +63,19 @@ h6,
   font-weight: 800;
 }
 
-.muba-h4,
+
 .muba-h4-center,
 .muba-h3 {
   font-family: 'Quicksand';
   font-size: 26px; /* Adjust font size for mobile */
   font-weight: 800;
 }
+
+.muba-h4 {
+  font-family: 'Quicksand';
+  font-size: 26px; 
+}
+
 
 .muba-h2-Q {
   font-family: 'Lemon Milk';
@@ -997,7 +1003,7 @@ section {
 
 /* Show the text on hover */
 .svg-container {
-  position: center;
+  justify-content: center;
 }
 .svg-container:hover .icon-text {
   display: block;
@@ -1043,6 +1049,7 @@ section {
   border-radius: 15px;
   overflow:hidden; }
   .grid-item:hover .grid-info {
+    justify-content: center;
     top: 50%;
     opacity: 50; }
   .grid-item:hover .grid-info2 {
