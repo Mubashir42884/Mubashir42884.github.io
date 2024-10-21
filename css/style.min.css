@@ -321,6 +321,7 @@ section {
 }
 
 .section-content {
+  height: max-content;
   padding-top: 30px; /* Adjust padding for better spacing */
   padding-bottom: 50px; /* Adjust padding for better spacing */
 }
@@ -1034,7 +1035,7 @@ section {
   color: #000; }
 
 .grid-portfolio {
-  overflow: hidden; }
+  overflow:visible; }
 
 .gutter-sizer {
   width: 50%; }
@@ -1047,7 +1048,7 @@ section {
   transition: none;
   margin-bottom: 20px;
   border-radius: 15px;
-  overflow:hidden; }
+  overflow: hidden; }
   .grid-item:hover .grid-info {
     justify-content: center;
     top: 50%;
