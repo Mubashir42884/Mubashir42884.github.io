@@ -930,16 +930,17 @@ section {
   text-align: left; }
 
 .testi-text {
-  font-weight: 300;
-  padding-top: 20px;
-  padding-bottom: 20px; }
+  font-size: 24px;
+  font-weight:bolder;
+  padding-top: 5px;
+  padding-bottom: 10px; }
 
 .testi-icon {
   color: #ff00cc; }
 
 .testi-content {
-  margin-top: 40px;
-  padding-bottom: 40px; }
+  margin-top: 10px;
+  padding-bottom: 10px; }
 
 .testi-item {
   margin-left: 15px;
