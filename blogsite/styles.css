@@ -1,0 +1,516 @@
+/* Define font faces */
+@font-face {
+    font-family: 'Lemon Milk';
+    src: url('fonts/LemonMilk.woff2') format('woff2'),
+         url('fonts/LemonMilk.woff') format('woff'),
+         url('fonts/LemonMilk.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'CMU Serif';
+    src: url('fonts/CMUSerif-Roman.woff2') format('woff2'),
+         url('fonts/CMUSerif-Roman.woff') format('woff'),
+         url('fonts/cmunrm.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Century Gothic';
+    src: url('fonts/CenturyGothic.woff2') format('woff2'),
+         url('fonts/CenturyGothic.woff') format('woff'),
+         url('fonts/GOTHIC.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Define CSS variables */
+:root {
+    /* Font Variables */
+    --font-header: 'Lemon Milk', sans-serif;
+    --font-body: 'CMU Serif', serif;
+    --font-homepage: 'Century Gothic', sans-serif;
+
+    /* Light Theme Default */
+    --bg: #E3E4FA;
+    --card-bg: #E8F3F2;
+    --search-bg: #fddddf;
+    --text: #262842;
+    --accent: #A97882;
+    --secondary: #8897BD;
+    --highlight: #CAFFBF;
+
+    /* Navigation Arrows - Light Mode */
+    --nav-arrow-bg: rgba(0, 0, 0, 0.5);
+    --nav-arrow-color: white;
+    --nav-arrow-hover-bg: rgba(0, 0, 0, 0.8);
+
+    /* Overlay Background - Light Mode */
+    --slide-overlay-bg: rgba(255, 255, 255, 0.6);
+}
+
+[data-theme="dark"] {
+    /* Dark Theme */
+    --bg: #262842;
+    --card-bg: #293961;
+    --search-bg: #204b59;
+    --text: #E3E4FA;
+    --accent: #A27CB8;
+    --secondary: #88A9B3;
+    --highlight: #58545F;
+
+    /* Navigation Arrows - Dark Mode */
+    --nav-arrow-bg: rgba(255, 255, 255, 0.5);
+    --nav-arrow-color: black;
+    --nav-arrow-hover-bg: rgba(255, 255, 255, 0.8);
+
+    /* Overlay Background - Dark Mode */
+    --slide-overlay-bg: rgba(0, 0, 0, 0.6);
+}
+
+/* Apply Fonts to Elements */
+body {
+    font-family: var(--font-body); /* CMU Serif for body text */
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0;
+}
+
+/* Header Title */
+.blog-title {
+    font-size: 3.5rem;
+    text-align: center;
+    flex: 2;
+    font-family: var(--font-header); /* Lemon Milk for header title */
+}
+
+/* Paragraphs and Subtitles */
+p, .post-content, .jumbotron-content p {
+    font-family: var(--font-body); /* CMU Serif for paragraphs and subtitles */
+}
+
+/* About, Biography, and Body Text */
+.about-box, .author-card, .archives-box, .keyword, .signup-btn {
+    font-family: var(--font-homepage); /* Century Gothic for about, bio, and body text */
+}
+
+/* Navigation */
+.blog-nav {
+    font-family: var(--font-header); /* Lemon Milk for navigation */
+}
+
+/* Post Titles */
+.post-title {
+    font-family: var(--font-header); /* Lemon Milk for post titles */
+}
+
+/* Keywords */
+.keyword {
+    font-family: var(--font-homepage); /* Century Gothic for keywords */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: 0.3s all ease;
+}
+
+.container {
+    width: 90%;
+    max-width: 1600px;
+}
+
+/* Header Styles */
+.blog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.search-container {
+    flex: 1;
+    margin-right: 2rem;
+    color: var(--text);
+}
+
+.search-bar {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid var(--secondary);
+    border-radius: 25px;
+    background: var(--search-bg);
+    font-weight: bolder;
+    color: var(--text);
+}
+
+.blog-title {
+    font-size: 3.5rem;
+    text-align: center;
+    flex: 2;
+    font-family: var(--font-header);
+}
+
+.theme-container {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Theme Switch */
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 120px; /* Increased width */
+    height: 34px;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    padding-top: 35px; /* Adjusted padding for better text alignment */
+    font-family: var(--font-header);
+    font-weight: bolder;
+    font-size: 12px;
+    background-color: var(--secondary);
+    transition: ease-out 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: var(--card-bg);
+    transition: ease-in 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--accent);
+}
+
+input:checked + .slider:before {
+    transform: translateX(86px); /* Adjusted for 120px width */
+}
+
+/* Navigation Styles */
+.blog-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 0.5rem 0;
+    border-bottom: 3px solid var(--secondary);
+    font-family: var(--font-header);
+}
+
+.blog-nav ul {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+.blog-nav a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+}
+
+.blog-nav a:hover {
+    background: var(--highlight);
+}
+
+.signup-btn {
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 25px;
+    background: var(--text);
+    color: var(--accent);
+    cursor: pointer;
+    font-family: var(--font-homepage);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+
+/* Jumbotron Styles */
+.jumbotron {
+    height: 600px;
+    width: 1630px;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    position: relative;
+    background: var(--card-bg);
+}
+
+.jumbotron-slides {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+}
+
+.jumbotron-slide {
+    min-width: 100%;
+    height: 100%;
+    transition: transform 2.5s ease-in-out;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem;
+    color: var(--text);
+    font-size: 2.0rem;
+}
+
+/* Update .jumbotron-slide::before */
+.jumbotron-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--slide-overlay-bg);
+    z-index: 1;
+}
+
+.jumbotron-content {
+    position: relative;
+    z-index: 2;
+    max-width: 80%;
+}
+
+/* Jumbotron Content */
+.jumbotron-content h2 {
+    font-family: var(--font-header); /* Lemon Milk for jumbotron titles */
+}
+
+.jumbotron-content p {
+    font-family: var(--font-body); /* CMU Serif for jumbotron paragraphs */
+}
+
+.jumbotron-content .post-keywords {
+    display: flex;
+    gap: 1.5rem;
+}
+
+/* Navigation Arrows */
+.slide-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--nav-arrow-bg);
+    color: var(--nav-arrow-color);
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    z-index: 3;
+    font-size: 1.0rem;
+    border-radius: 50%;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.slide-nav:hover {
+    background: var(--nav-arrow-hover-bg);
+}
+
+.prev {
+    left: 1rem;
+}
+
+.next {
+    right: 1rem;
+}
+
+
+
+/* Main Content Layout */
+.main-content {
+    display: flex;
+    gap: 2rem;
+}
+
+.left-column {
+    flex: 0 0 70%;
+}
+
+.right-column {
+    flex: 0 0 30%;
+}
+
+/* Post Grid Styles */
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.post-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.post-card:hover .post-content {
+    flex: 1;
+}
+
+.post-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.post-content {
+    padding: 1rem;
+    flex: 0.7;
+    transition: flex 0.3s ease;
+    font-family: var(--font-body);
+}
+
+.post-card:hover .post-content {
+    flex: 1;
+}
+
+.post-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-header);
+}
+
+.post-date {
+    color: var(--secondary);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.post-keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.keyword {
+    background: var(--highlight);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-family: var(--font-homepage);
+}
+
+/* Right Column Styles */
+.about-box, .author-card, .archives-box {
+    background: var(--card-bg);
+    border: 2px solid var(--secondary); /* Use CSS variable for border color */
+    padding: 1.5rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    font-family: var(--font-homepage);
+}
+
+/* Author Card */
+.author-card {
+    display: flex; 
+    align-items: center;
+    gap: 1.0rem; 
+}
+
+.author-card img {
+    width: 150px; 
+    height: 170px; 
+    border-radius: 30%; 
+    object-fit: cover; 
+}
+
+.author-card .right-bio {
+    font-family: var(--font-body);
+    flex: 1; 
+}
+
+.author-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+}
+
+.author-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--secondary);
+}
+
+.author-card p {
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.5;
+}
+
+.archives-box ul {
+    list-style: none;
+}
+
+.archives-box li {
+    margin: 0.5rem 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .post-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    .blog-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .main-content {
+        flex-direction: column;
+    }
+
+    .left-column, .right-column {
+        flex: 1;
+    }
+
+    .post-grid {
+        grid-template-columns: 1fr;
+    }
+}
