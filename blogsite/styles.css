@@ -27,20 +27,31 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Quicksand';
+    src: url('fonts/Quicksand.woff2') format('woff2'),
+         url('fonts/Quicksand.woff') format('woff'),
+         url('fonts/Quicksand.ttf') format('truetype');
+    font-weight: bolder;
+    font-style: normal;
+}
+
 /* Define CSS variables */
 :root {
     /* Font Variables */
     --font-header: 'Lemon Milk', sans-serif;
     --font-body: 'CMU Serif', serif;
     --font-homepage: 'Century Gothic', sans-serif;
+    --font-secondary: 'Quicksand', arial;
 
     /* Light Theme Default */
-    --bg: #E3E4FA;
-    --card-bg: #E8F3F2;
+    --bg: #f1f1fb;
+    --card-bg: #eefffe;
     --search-bg: #fddddf;
     --text: #262842;
-    --accent: #A97882;
-    --secondary: #8897BD;
+    --subheader: #382154;
+    --accent: #c05d71;
+    --secondary: #5d6e9b;
     --highlight: #CAFFBF;
 
     /* Navigation Arrows - Light Mode */
@@ -58,7 +69,8 @@
     --card-bg: #293961;
     --search-bg: #204b59;
     --text: #E3E4FA;
-    --accent: #A27CB8;
+    --subheader: #fff9c8;
+    --accent: #b695c9;
     --secondary: #88A9B3;
     --highlight: #58545F;
 
@@ -110,20 +122,38 @@ p, .post-content, .jumbotron-content p {
     font-family: var(--font-header); /* Lemon Milk for post titles */
 }
 
+
+
+.jumbotron-slide-link {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit text color */
+    display: block; /* Make the entire slide clickable */
+    width: 100%;
+    height: 100%;
+}
+
+.jumbotron-slide-link:hover .jumbotron-slide {
+    text-decoration: none;
+    transform: scale(1.02); /* Add hover effect */
+    transition: transform 0.3s ease;
+}
+
 /* Keywords */
 .keyword {
     font-family: var(--font-homepage); /* Century Gothic for keywords */
 }
 
+
+
 * {
     margin: 0;
-    padding: 0;
+    padding: none;
     box-sizing: border-box;
     transition: 0.3s all ease;
 }
 
 .container {
-    width: 90%;
+    width: 100%;
     max-width: 1600px;
 }
 
@@ -136,6 +166,9 @@ p, .post-content, .jumbotron-content p {
 }
 
 .search-container {
+    width: 100%;
+    padding-top: 0.5rem;
+    padding-bottom: 2.5rem;
     flex: 1;
     margin-right: 2rem;
     color: var(--text);
@@ -148,6 +181,7 @@ p, .post-content, .jumbotron-content p {
     border-radius: 25px;
     background: var(--search-bg);
     font-weight: bolder;
+    font-size: 1.2rem;
     color: var(--text);
 }
 
@@ -159,7 +193,6 @@ p, .post-content, .jumbotron-content p {
 }
 
 .theme-container {
-    flex: 1;
     display: flex;
     justify-content: flex-end;
 }
@@ -261,7 +294,7 @@ input:checked + .slider:before {
 /* Jumbotron Styles */
 .jumbotron {
     height: 600px;
-    width: 1630px;
+    width: 100%;
     border-radius: 15px;
     overflow: hidden;
     margin-bottom: 2rem;
@@ -272,9 +305,9 @@ input:checked + .slider:before {
 .jumbotron-slides {
     width: 100%;
     height: 100%;
-    position: relative;
     display: flex;
     overflow: hidden;
+    position: relative;
 }
 
 .jumbotron-slide {
@@ -288,17 +321,14 @@ input:checked + .slider:before {
     align-items: flex-end;
     padding: 2rem;
     color: var(--text);
-    font-size: 2.0rem;
+    font-size: 2rem;
 }
 
-/* Update .jumbotron-slide::before */
+/* Overlay Fix */
 .jumbotron-slide::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0; /* shorthand for top, right, bottom, left: 0 */
     background: var(--slide-overlay-bg);
     z-index: 1;
 }
@@ -311,17 +341,18 @@ input:checked + .slider:before {
 
 /* Jumbotron Content */
 .jumbotron-content h2 {
-    font-family: var(--font-header); /* Lemon Milk for jumbotron titles */
+    font-family: var(--font-header); /* Lemon Milk */
 }
 
 .jumbotron-content p {
-    font-family: var(--font-body); /* CMU Serif for jumbotron paragraphs */
+    font-family: var(--font-body); /* CMU Serif */
 }
 
 .jumbotron-content .post-keywords {
     display: flex;
-    gap: 1.5rem;
+    gap: 1rem;
 }
+
 
 /* Navigation Arrows */
 .slide-nav {
@@ -333,10 +364,11 @@ input:checked + .slider:before {
     border: none;
     padding: 1rem;
     cursor: pointer;
-    z-index: 3;
-    font-size: 1.0rem;
+    z-index: 5; /* Ensure above overlay */
+    font-size: 1rem;
     border-radius: 50%;
     transition: background 0.3s ease, color 0.3s ease;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
 }
 
 .slide-nav:hover {
@@ -353,6 +385,7 @@ input:checked + .slider:before {
 
 
 
+
 /* Main Content Layout */
 .main-content {
     display: flex;
@@ -360,7 +393,7 @@ input:checked + .slider:before {
 }
 
 .left-column {
-    flex: 0 0 70%;
+    flex: 0 0 68%;
 }
 
 .right-column {
@@ -371,7 +404,7 @@ input:checked + .slider:before {
 .post-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .post-card {
@@ -391,6 +424,19 @@ input:checked + .slider:before {
     width: 100%;
     height: 200px;
     object-fit: cover;
+}
+
+/* Post Links */
+.post-link {
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.post-link:hover .post-card {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .post-content {
@@ -432,9 +478,10 @@ input:checked + .slider:before {
 
 /* Right Column Styles */
 .about-box, .author-card, .archives-box {
+    width: 100%;
     background: var(--card-bg);
-    border: 2px solid var(--secondary); /* Use CSS variable for border color */
-    padding: 1.5rem;
+    border: 3px solid var(--secondary); /* Use CSS variable for border color */
+    padding: 1rem;
     border-radius: 15px;
     margin-bottom: 2rem;
     font-family: var(--font-homepage);
@@ -442,21 +489,21 @@ input:checked + .slider:before {
 
 /* Author Card */
 .author-card {
+    width: 100%;
     display: flex; 
     align-items: center;
-    gap: 1.0rem; 
+
 }
 
 .author-card img {
-    width: 150px; 
-    height: 170px; 
-    border-radius: 30%; 
-    object-fit: cover; 
+    width: 110px; 
+    border-radius: 10%; 
 }
 
 .author-card .right-bio {
+    padding-left: 1.2rem;
     font-family: var(--font-body);
-    flex: 1; 
+    flex: 1;
 }
 
 .author-card h3 {
@@ -514,3 +561,264 @@ input:checked + .slider:before {
         grid-template-columns: 1fr;
     }
 }
+
+
+
+
+/* Additional CSS for better blog presentation */
+.blog-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    line-height: 1.6;
+    font-family: var(--font-body);
+    color: var(--text);
+}
+
+.blog-content h1 {
+    font-family: var(--font-header);
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent);
+}
+
+.blog-content h2 {
+    font-family: var(--font-header);
+    font-size: 1.8rem;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--accent);
+}
+
+.blog-content h3 {
+    font-family: var(--font-secondary);
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--subheader);
+}
+
+.blog-content h4 {
+    font-family: var(--font-homepage);
+    font-size: 1.2rem;
+    font-weight: bolder;
+    margin-top: 1.5rem;
+    color: var(--secondary);
+}
+
+.blog-content p {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    text-align: justify;
+    font-weight: normal;
+    color: var(--text);
+}
+
+ .blog-content ol {
+    font-family: var(--font-secondary);
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+.blog-content ul {
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    font-weight: normal;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+    text-indent: 1.2em;
+}
+
+.blog-content code {
+    background: var(--card-bg);
+    font-size: 0.8rem;
+    padding: 0rem 0.1rem;
+    border-radius: 15px;
+    font-family: monospace;
+    color: var(--text);
+}
+
+/* Styling the code box */
+.blog-content pre {
+    align-items: center;
+    width: 80%;
+    background: #282727;
+    color: var(--text);
+    padding-left: 1.5rem;
+    padding-bottom: 0.5rem;
+    padding-top: none;
+    border-radius: 8px;
+    overflow-x: auto;
+    position: relative;
+}
+
+.blog-content pre code {
+    background: none;
+    padding: none;
+    border-radius: 0;
+    font-family: 'Fira Code', monospace;
+    font-size: 1rem;
+    color: #E8F3F2;
+}
+
+/* Styling for syntax highlighting */
+.blog-content code .key { color: #ff7300; background: none; font-family: monospace; font-size: 0.8rem; padding: none; }
+.blog-content code .codes { color: #E8F3F2; background: none;font-family: monospace;  font-size: 0.8rem;}
+.blog-content code .comment { color: #a1c2aa;font-family: monospace;  font-size: 0.8rem;}
+.blog-content code .string { color: #92c5ff;font-family: monospace;  font-size: 0.8rem;}
+.blog-content code .number { color: #ac93ff;font-family: monospace;  font-size: 0.8rem;}
+
+/* Styling the copy button */
+.copy-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--card-bg);
+    color: var(--text);
+    border: none;
+    padding: 5px 8px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.copy-button:hover {
+    background: var(--accent);
+}
+.blog-content{
+    font-weight: normal;
+}
+
+.blog-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+}
+
+.blog-content table, .blog-content th, .blog-content td {
+    border: 1px solid var(--secondary);
+    font-weight: normal;
+}
+
+.blog-content th, .blog-content td {
+    padding: 0.5rem;
+    text-align: left;
+}
+
+.blog-content th {
+    background: var(--card-bg);
+}
+
+.blog-content .author-info {
+    font-style: italic;
+    font-size: 1rem;
+    font-weight: normal;
+    margin-bottom: 2rem;
+    color: var(--text);
+}
+
+.blog-content .math {
+    font-family: var(--font-body);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+.blogpost-title {
+    font-size: 2.0rem;
+    text-align: center;
+    padding: 0 15rem; /* Add padding to the sides */
+    font-family: var(--font-header); /* Lemon Milk for header title */
+    margin: 0; /* Ensure no default margin */
+}
+.blogpost-header {
+    display: flex; /* Use flexbox for alignment */
+    justify-content: center; /* Center the title horizontally */
+    align-items: center; /* Center the title vertically */
+    margin-bottom: 2rem;
+    width: 100%; /* Ensure the header takes full width */
+}
+blockquote {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--text);
+    padding: 10px 20px;
+    margin: 20px;
+    border-left: 5px solid var(--secondary);
+    background-color: var(--card-bg);
+}
+.letter {
+    font-size: 2.5rem;
+    font-weight: bolder;
+}
+
+.in-text{
+    font-style: italic;
+    font-size: 1rem;
+    font-weight: bolder;
+    border-radius: 15px;
+    font-family: monospace;
+    color: var(--text);
+}
+.links{
+    font-size: 1rem;
+    font-weight: bolder;
+    border-radius: 15px;
+    font-family: var(--font-homepage);
+    color: var(--accent);
+}
+
+.outputs {
+    font-size: 1rem;
+    font-weight: normal;
+    font-family: monospace;
+    font-style: normal;
+    color: var(--accent);
+    width: 75%;
+}
+.tags {
+    display: absolute;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    padding-bottom: 2.5rem;
+}
+
+.tag {
+    height: fit-content;
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    background: var(--highlight);
+    color: var(--text);
+    border-radius: 20px;
+    text-decoration: none;
+    font-family: var(--font-homepage);
+    font-weight: bolder;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+.tag-h {
+    padding-bottom: 0.5rem;
+}
+.tag:hover {
+    background: var(--accent);
+    color: var(--card-bg);
+}
+/* Banner Image Container */
+.banner-img {
+    height: 60%;
+    max-width: 1200px; /* Adjust based on your design */
+    margin: 0 auto; /* Center the banner */
+    margin-bottom: 2rem; /* Add spacing below the banner */
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden; /* Ensure the image stays within the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Banner Image */
+.banner-img img {
+    width: 100%; /* Make the image responsive */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove extra space below the image */
+}
+

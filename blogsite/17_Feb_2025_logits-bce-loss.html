@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logits and BCE with Logits Loss – Explained</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your existing CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Add Keywords and Tags for SEO -->
+    <meta name="keywords"
+        content="BCE with logits loss, BCE loss, logits, binary cross-entropy, PyTorch, machine learning, sigmoid, activation function, linear regression">
+    <meta name="tags"
+        content="machine learning, deep learning, PyTorch, neural networks, binary classification, linear regression">
+</head>
+
+<style>
+    .post-grid {
+        display: none;
+        /* Hide by default */
+    }
+</style>
+
+<body>
+    <div class="container">
+
+
+        <!-- Header -->
+        <header class="blog-header">
+            <button class="signup-btn">Sign Up</button>
+            <h1 class="blog-title">AI Odyssey</h1>
+            <div class="theme-container">
+                <label class="theme-switch">
+                    <input type="checkbox" id="themeToggle">
+                    <span class="slider round">Toggle Theme</span>
+                </label>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="blog-nav">
+            <ul>
+                <li><a href="index.html" data-tag="all">Home</a></li>
+                <li><a href="#" data-tag="latest">Latest</a></li>
+                <li><a href="#" data-tag="notebooks">Notebooks</a></li>
+                <li><a href="#" data-tag="articles">Articles</a></li>
+                <li><a href="#" data-tag="academic">Academic</a></li>
+                <li><a href="#" data-tag="learnings">Learnings</a></li>
+            </ul>
+
+        </nav>
+
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="🔍 Search articles...">
+        </div>
+
+        <div class="post-grid" id="postContainer">
+            <!-- Posts will be dynamically added here -->
+        </div>
+
+        <!-- Blog Header -->
+        <header class="blogpost-header">
+            <h1 class="blogpost-title">Logits and BCE with Logits Loss – Explained</h1>
+        </header>
+
+
+
+        <!-- Blog Content -->
+        <div class="blog-content">
+            <!-- Blog Post Banner-->
+            <div class="banner-img">
+                <img src="resources/bce-with-logits-loss.jpg" alt="Author Photo">
+            </div>
+            <h4>Mubashir Mohsin</h4>
+            <div class="author-info">
+                <p class="author-info">Department of Computer Science, AIUB, Dhaka-1229, Bangladesh<br>
+                    Date Posted: 17 February 2025</p>
+            </div>
+
+            <!-- Add Keywords and Tags Section -->
+            <div class="keywords-tags">
+                <div class="tags">
+                    <h4 class="tag-h">Tags</h4>
+                    <a href="#" class="tag">Machine Learning</a>
+                    <a href="#" class="tag">Deep Learning</a>
+                    <a href="#" class="tag">PyTorch</a>
+                    <a href="#" class="tag">Neural Networks</a>
+                    <a href="#" class="tag">Linear Regression</a>
+                </div>
+            </div>
+
+            <p><a class="letter">B</a>inary classification is a fundamental task in machine learning, often using the
+                Binary Cross-Entropy,
+                <a class="in-text">BCELoss()</a> function combined with a Sigmoid activation. However, an alternative,
+                <a class="in-text">BCEWithLogitsLoss()</a>, provides better numerical stability and is preferred in many
+                cases. In
+                this
+                article, we will try to understand logits and its relation to BCE loss calculations.
+            </p>
+
+            <p>To make this topic easier to understand, I will explain it in two ways:</p>
+            <ol>
+                <a class="in-text" href="#way-1">
+                    <li>A simple, non-technical manner</li>
+                </a>
+                <a class="in-text" href="#way-2">
+                    <li>A technical and mathematically reasoned approach</li>
+                </a>
+            </ol>
+
+
+            <h2 id="way-1">I. Logits and BCE Loss: Simple Explanation</h2>
+
+            <h3>What are Logits?</h3>
+            <p>Logits are the raw outputs of a neural network before applying an activation function like Sigmoid or
+                SoftMax. Unlike probabilities (which range from 0 to 1), logits can take any real value (−∞, +∞).</p>
+
+            <h3>How Logits Relate to BCE Loss?</h3>
+            <p>We normally have multiple parameters inside an NN architecture with multiple different types of layers
+                (e.g., weights & bias) connected to one another. While we train our models to learn to adjust the
+                parameters, we send the parameters with a forward pass function where we use the activation function
+                like sigmoid. The activation function is nothing but a normalizing function that represents a raw linear
+                combination of inputs and learned weights (logits) into a probabilistic range (0 to 1).</p>
+            <p>So, when we use the BCE loss function, we technically apply the sigmoid function first to the final layer
+                before calculating the loss in backpropagation. This means, when using BCE loss for a binary
+                classification task, we must include a sigmoid activation function in the final layer to represent the
+                logits into a range of probability.</p>
+
+            <h3>Why do we apply Sigmoid?</h3>
+            <p>But what will happen if we do not use an activation function? Well, the model’s network could output
+                values outside the normal range [0, 1] of probability and lead to negative logs while calculating loss
+                while causing instability with gradients.</p>
+
+            <h3>Why use Logits?</h3>
+            <p>To simply put, logits are more expressive than a restricted range of probability [0, 1]. Logits provide
+                an unrestricted range (−∞, +∞), meaning a more expressive range of a parameter's learning pattern rather
+                than a restricted range of (0, 1). Eventually, this avoids saturation later when we use sigmoid
+                activation.</p>
+
+            <h3>How are Logits useful?</h3>
+            <p>We have already covered the first usefulness of logits above; now let's see how it helps future sigmoid
+                activation later.</p>
+            <p>If we apply sigmoid activation before training (what we do in BCE Loss), we might face gradient vanishing
+                issues (for more details on vanishing gradients, <a class="links"
+                    href="resources/Logits and BCE with Logits Loss - Explained.pdf" target="_blank">click here</a>)
+                when the network produces
+                very high or very low values. For example:</p>
+            <p>
+            <blockquote>If the logits range is very large, let's say (-100, 100), then the sigmoid function saturates to
+                0 or
+                1, leading to a near-zero gradient. Which by all means is a bad thing for our model. This leads to
+                computational instability with gradients. Because computing BCE losses directly with probabilities
+                can lead to undefined value or undefined results beyond the probability range.</blockquote>
+            </p>
+            <p>So, we could say logits are important for <strong>three things</strong> mainly:</p>
+            <ul>
+                <li>Logits are more expressive.</li>
+                <li>Logits help avoid vanishing gradients.</li>
+                <li>Logits are computationally stable.</li>
+            </ul>
+
+            <h3>Key Differences Between BCE With Logits Loss and BCE Loss</h3>
+            <p>BCEWithLogitsLoss() combines the Sigmoid activation and BCE loss into a single function, providing better
+                numerical stability. On the other hand, BCELoss() requires you to manually apply the Sigmoid activation
+                before calculating the loss.
+            </p>
+
+            <div class="table-container">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>nn.BCELoss()</th>
+                            <th>nn.BCEWithLogitsLoss()</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Input to loss function</td>
+                            <td>Probabilities (0 to 1)</td>
+                            <td>Logits (any real number)</td>
+                        </tr>
+                        <tr>
+                            <td>Final layer requirement</td>
+                            <td>Requires Sigmoid activation</td>
+                            <td>No activation needed (Sigmoid applied internally)</td>
+                        </tr>
+                        <tr>
+                            <td>Numerical stability</td>
+                            <td>Less stable (prone to vanishing gradients)</td>
+                            <td>More stable (avoids extreme log calculations)</td>
+                        </tr>
+                        <tr>
+                            <td>Common use case</td>
+                            <td>When manually applying Sigmoid</td>
+                            <td>When using raw logits directly</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <h3 align="center" style="color: #c05d71; font-size: 1.5rem;">** If you are interested in exploring the
+                mathematical reasons of logit and BCE loss,
+                continue from here.</h3>
+
+            <h2 id="way-2">II. Logits and BCE Loss: Mathematical Explanation</h2>
+
+            <h3>What are Logits?</h3>
+            <p>Logits are linearly transformed outputs of the given inputs. During the forward pass, the parameters
+                (weights and biases) are transformed into an unnormalized range (−∞, +∞) of real numerical values.
+                Unlike the probability range (0 to 1), logits are more expressive with a bigger range of numbers.
+                Mathematically, an NN's final layer (before activation) computes a linear combination of the input
+                parameters (weights and bias), which could be represented like this:</p>
+            <div class="math">
+                \[
+                \boldsymbol{z} = \boldsymbol{Wx} + \boldsymbol{b}
+                \]
+            </div>
+            <p>where \(\boldsymbol{W}\) is the weight matrix, \(\boldsymbol{x}\) is input features, and
+                \(\boldsymbol{b}\) is bias term. Logits can take any real value, positive or negative. They don't
+                represent probabilities but rather unscaled scores.</p>
+
+            <h3>How Logits Relate to BCE Loss?</h3>
+            <p>Since logits are not probabilities, we typically apply the Sigmoid function to convert them into
+                probabilities before using BCE loss:</p>
+            <div class="math">
+                \[
+                \boldsymbol{\hat{y}} = \boldsymbol{\sigma(z)} = \frac{1}{1 + e^{-z}}
+                \]
+            </div>
+            <p>where \(\boldsymbol{z}\) is the raw output (logits) and \(\boldsymbol{\sigma(z)}\) is the probability
+                prediction. <strong>Basically, if we use sigmoid on logits, we transform that into probability.</strong>
+            </p>
+
+            <h3>Why Use Logits Instead of Probabilities Directly?</h3>
+            <ol type="i">
+                <li>Logits provide an unrestricted range (−∞, +∞), while probabilities are constrained to [0,1]. This
+                    makes it easier for the model to learn without being limited to a fixed range during training.</li>
+                </br>
+                <li>Logits can avoid saturation in the sigmoid function before the final layer. If we apply the sigmoid
+                    function before training, we may face gradient vanishing issues when the network produces very high
+                    or very low values. For example:
+                    <ul>
+                        <li>If \( z \gg 1 \), then \( \sigma(z) \approx 1 \), and \( \log(\sigma(z)) \approx 0 \)</li>
+                        <li>If \( z \ll -1 \), then \( \sigma(z) \approx 0 \), and \( \log(1 - \sigma(z)) \approx 0 \)
+                        </li>
+                    </ul>
+                    <p style="font-family: 'CMU Serif';">Here, \( \sigma \) is the activation and \( z \) is the scalar
+                        point per sample of the parameters (logits).</p>
+                </li>
+                <li>Logits provide computational stability in calculating BCE Loss, because computing BCE loss directly
+                    with probabilities can lead to numerical instability. For instance:
+                    <ul>
+                        <li>If \( \hat{y} \) (probability) is exactly 0 or 1, then \( \log(\hat{y}) \) or \( \log(1 -
+                            \hat{y}) \) will result in NaN or undefined values.</li>
+                        <li>Logits avoid this problem because they are transformed into stable log terms before
+                            exponentiation.</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <p>In both cases, gradients become very small, slowing down learning. Using logits allows the model to
+                operate in an unconstrained space during training, improving gradient flow while learning.</p>
+
+            <h3>How BCEWithLogitsLoss() Works?</h3>
+            <p>Instead of explicitly applying Sigmoid before BCE loss, PyTorch's BCEWithLogitsLoss() internally applies
+                the Sigmoid function in a numerically stable way.</p>
+            <p>The mathematical formulation of calculating BCE loss is:</p>
+            <div class="math">
+                \[
+                \mathcal{L} = -\mathbf{y} \cdot \log(\sigma(z)) - (1 - \mathbf{y}) \cdot \log(1 - \sigma(z))
+                \]
+            </div>
+            <p>which is sensitive to floating-point precision. Therefore, PyTorch reformulates this as:</p>
+            <div class="math">
+                \[
+                \mathcal{L} = \max(z, 0) - z\mathbf{y} + \log(1 + e^{|z|})
+                \]
+            </div>
+            <p>and this avoids exponentiating large values, preventing numerical instability.</p>
+
+            <h3>When to Use Logits and Probabilities?</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Scenario</th>
+                        <th>Use Logits</th>
+                        <th>Use Probabilities</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Neural Network Training</td>
+                        <td>✅ Yes (logits work better)</td>
+                        <td>✅ No (vanishing gradient issue)</td>
+                    </tr>
+                    <tr>
+                        <td>Output interpretation (inference)</td>
+                        <td>✅ No</td>
+                        <td>✅ Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Loss Function</td>
+                        <td>torch.nn.BCEWithLogitsLoss()</td>
+                        <td>torch.nn.BCELoss()</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Example Codes</h3>
+
+            <h4>A) Using BCE Loss with Sigmoid Activation:</h4>
+            <!-- Codebox with Copy Button -->
+            <div class="code-container">
+                <pre><code>
+<span class="key">import</span> <span class="codes">torch</span>
+<span class="key">import</span> <span class="codes">torch.nn</span> <span class="key">as</span><span class="codes"> nn</span>
+<span class="comment"># Here, we manually apply torch.sigmoid().</span>
+<span class="comment"># Without sigmoid, BCELoss() would fail.</span>
+<span class="codes">loss_fn</span> = <span class="codes">nn.BCELoss</span>()
+
+<span class="codes">logits</span> = <span class="codes">torch.tensor</span>([<span class="number">3.0</span>, <span class="number">-1.5</span>, <span class="number">0.0</span>])  <span class="comment"># Raw scores (logits)</span>
+<span class="codes">y_true</span> = <span class="codes">torch.tensor</span>([<span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>])  <span class="comment"># Ground truth labels</span>
+
+<span class="comment"># Print logits to show</span>
+<span class="key">print</span>(<span class="string">f"Raw Logits Representation: {<span class="codes">logits</span>}"</span>)
+
+<span class="comment"># Convert logits to probabilities</span>
+<span class="codes">probs</span> = <span class="codes">torch.sigmoid</span>(<span class="codes">logits</span>)
+
+<span class="comment"># Compute BCE loss</span>
+<span class="codes">loss</span> = <span class="codes">loss_fn</span>(<span class="codes">probs</span>, <span class="codes">y_true</span>)
+<span class="key">print</span>(<span class="string">f"Probability Representation: {<span class="codes">loss.item()</span>}"</span>)  <span class="comment"># Output BCE loss</span>
+</code><button class="copy-button" onclick="copyCode(this)">Copy</button></pre>
+            </div>
+
+            <p>
+            <blockquote class="outputs">
+                <span class="outputs">Raw Logits Representation </span> <span class="outputs"> : tensor([ 3.0000,
+                    -1.5000,
+                    0.0000])</span>
+                </br>
+                <span class="outputs">Probability Representation</span><span class="outputs">: 0.3143825829029083</span>
+            </blockquote>
+            </p>
+
+            <h4>B) Using BCE With Logits Loss (recommended):</h4>
+            <!-- Codebox with Copy Button -->
+            <div class="code-container">
+                <pre><code>
+<span class="key">import </span><span class="codes">torch</span>
+<span class="key">import</span><span class="codes"> torch.nn </span><span class="key">as</span><span class="codes"> nn</span>
+
+<span class="comment"># No need for an explicit sigmoid activation.</span>
+<span class="comment"># Works directly with logits.</span>
+<span class="comment"># More stable numerically.</span>
+<span class="codes">loss_fn = nn.BCEWithLogitsLoss()</span>
+<span class="codes">logits</span> = <span class="codes">torch.tensor</span>([<span class="number">3.0</span>, <span class="number">-1.5</span>, <span class="number">0.0</span>])  <span class="comment"># Raw scores (logits)</span>
+<span class="codes">y_true</span> = <span class="codes">torch.tensor</span>([<span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>])  <span class="comment"># Ground truth labels</span>
+
+<span class="comment"># Directly pass Logits (no sigmoid needed)</span>
+<span class="codes">loss</span> = <span class="codes">loss_fn</span>(<span class="codes">logits</span>, <span class="codes">y_true</span>)
+<span class="codes">print</span>(<span class="string">f"Probability Representation: {<span class="codes">loss.item()</span>}"</span>)  <span class="comment"># Output BCEWithLogitsLoss</span>
+</code><button class="copy-button" onclick="copyCode(this)">Copy</button></pre>
+            </div>
+
+            <p>
+            <blockquote class="outputs">
+                <span class="outputs">Probability Representation</span><span class="outputs">: 0.3143825829029083</span>
+            </blockquote>
+            </p>
+
+            <h2>Final Thoughts and Summary</h2>
+            <ul>
+                <li>Logits are raw model outputs before activation.</li>
+                <li>They are numerically more stable than probabilities for loss computation.</li>
+                <li>Sigmoid converts logits into probabilities for BCELoss().</li>
+                <li>BCEWithLogitsLoss() internally applies sigmoid and is recommended for training.</li>
+                <li>BCEWithLogitsLoss() is preferred for stability and better gradient flow.</li>
+                <li>During inference, BCEWithLogitsLoss() might perform better.</li>
+            </ul>
+            
+        </div>
+        <nav class="blog-nav"></nav>
+    </div>
+
+    <!-- Link to your existing JS -->
+    <script src="script.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+
+</html>
