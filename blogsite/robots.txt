@@ -1,0 +1,36 @@
+# robots.txt for AI Odyssey Blog
+# This file tells search engines which pages they can and cannot crawl
+
+# Allow all search engines to crawl the entire site
+User-agent: *
+Allow: /
+
+# Disallow crawling of specific directories (if any)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Sitemap location - CRITICAL for SEO
+Sitemap: https://github.com/Mubashir42884/Mubashir42884.github.io/blob/main/blogsite/sitemap.xml
+
+# Crawl-delay (optional, in seconds)
+# Some search engines respect this to avoid overloading your server
+# Crawl-delay: 10
+
+# Specific rules for different bots (examples)
+# Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 5
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 5
+
+# Yahoo
+User-agent: Slurp
+Allow: /
+
+# Block bad bots (optional)
+# User-agent: BadBot
+# Disallow: /

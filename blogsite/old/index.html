@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Odyssey</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="blog-header">
+            <button class="signup-btn">Sign Up</button>
+            <h1 class="blog-title">AI Odyssey</h1>
+            <div class="theme-container">
+                <label class="theme-switch">
+                    <input type="checkbox" id="themeToggle">
+                    <span class="slider round">Toggle Theme</span>
+                </label>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="blog-nav">
+            <ul>
+                <li><a href="#" data-tag="all">Home</a></li>
+                <li><a href="#" data-tag="latest">Latest</a></li>
+                <li><a href="#" data-tag="notebooks">Notebooks</a></li>
+                <li><a href="#" data-tag="articles">Articles</a></li>
+                <li><a href="#" data-tag="academic">Academic</a></li>
+                <li><a href="#" data-tag="learnings">Learnings</a></li>
+            </ul>
+            
+        </nav>
+
+        <!-- Jumbotron Section -->
+        <div class="jumbotron">
+            <div class="jumbotron-slides">
+                <!-- Slides will be dynamically added here -->
+            </div>
+            <!-- Navigation Arrows -->
+            <button class="slide-nav prev" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="slide-nav next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="🔍 Search posts...">
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Left Column -->
+            <div class="left-column">
+                <div class="post-grid" id="postContainer">
+                    <!-- Posts will be dynamically added here -->
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="right-column">
+                <div class="about-box">
+                    <h3>About This Blog</h3>
+                    <p>Exploring the frontiers of AI and information science through research, experiments, and
+                        insights.</p>
+                </div>
+
+                <div class="author-card">
+                    <div class="left-img">
+                        <img src="resources/author.jpg" alt="Author Photo">
+                    </div>
+                    <div class="right-bio">
+                        <h3>MUBASHIR MOHSIN</h3>
+                        <h4>Prospective M.Sc. student in Computer Science</h4>
+                        <p>AI, ML, DL Researcher, AIUB, Bangladesh</p>
+                        <a href="https://scholar.google.com/citations?hl=en&user=L6Esq54AAAAJ" target="_blank">Scholar</a>
+                        <a href="https://www.linkedin.com/in/mubashir-mohsin/" target="_blank">LinkedIn</a>
+                        <a href="https://github.com/Mubashir42884" target="_blank">GitHub</a>    
+                    </div>
+                </div>
+
+                <div class="archives-box">
+                    <h3>Archives</h3>
+                    <ul id="archivesList">
+                        <!-- Archives will be dynamically added here -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

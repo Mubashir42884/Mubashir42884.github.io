@@ -16,22 +16,29 @@ themeToggle.checked = savedTheme === 'dark';
 // Sample Posts Data
 const posts = [
     {
-        title: "Beyond Rankings: Seeing the Unique Light Each Scientist Brings to Humanity",
-        date: "2026-02-12",
-        keywords: ["Science", "History of Science", "Physics", "Scientists", "Philosophy", "Articles"],
-        image: "resources/scientists-banner.jpg",
-        content: "We live in a world obsessed with rankings. But when it comes to scientists, such rankings feel fundamentally disrespectful. Each scientist possesses a distinct aura, a particular quality of brilliance that cannot be compared...",
-        highlight: true,
-        location: "scientists-blogpost.html"
-    },
-    {
         title: "Logits and BCE with Logits Loss – Explained",
         date: "2025-02-17",
         keywords: ["Machine Learning", "Deep Learning", "PyTorch", "Neural Networks", "Linear Regression", "Learning", "Academic"],
         image: "resources/bce-with-logits-loss.jpg",
         content: "Binary classification is a fundamental task in machine learning, often using the Binary Cross-Entropy,...",
         highlight: true,
-        location: "logits-bce-loss.html"
+        location: "17_Feb_2025_logits-bce-loss.html"
+    },
+    {
+        title: "Data Visualization Techniques",
+        date: "2024-03-18",
+        keywords: ["Data Science", "Visualization", "Tools"],
+        image: "resources/image.jpg",
+        content: "Learn about the latest data visualization tools...",
+        highlight: false
+    },
+    {
+        title: "Machine Learning Basics",
+        date: "2024-03-20",
+        keywords: ["AI", "Machine Learning", "Tutorial"],
+        image: "resources/image.jpg",
+        content: "A beginner's guide to machine learning...",
+        highlight: true
     },
     // Add more posts as needed
 ];

@@ -4,15 +4,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logits and BCE with Logits Loss – Explained</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your existing CSS -->
+    <title>Logits and BCE with Logits Loss – Explained | AI Odyssey</title>
+    
+    <!-- Meta Description for SEO -->
+    <meta name="description" content="Learn about logits and BCEWithLogitsLoss in PyTorch. Understand why it's numerically more stable than BCE loss with sigmoid, with practical code examples and mathematical explanations.">
+    
+    <!-- Keywords -->
+    <meta name="keywords" content="BCE with logits loss, BCE loss, logits, binary cross-entropy, PyTorch, machine learning, sigmoid, activation function, neural networks, deep learning, binary classification">
+    
+    <!-- Author -->
+    <meta name="author" content="Mubashir Mohsin">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourdomain.com/blog/logits-bce-loss-explained">
+    
+    <!-- Open Graph Tags for Social Media -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Logits and BCE with Logits Loss – Explained">
+    <meta property="og:description" content="Learn about logits and BCEWithLogitsLoss in PyTorch. Understand why it's numerically more stable than BCE loss with sigmoid, with practical code examples.">
+    <meta property="og:image" content="https://yourdomain.com/resources/bce-with-logits-loss.jpg">
+    <meta property="og:url" content="https://yourdomain.com/blog/logits-bce-loss-explained">
+    <meta property="og:site_name" content="AI Odyssey">
+    <meta property="article:published_time" content="2025-02-17T00:00:00Z">
+    <meta property="article:author" content="Mubashir Mohsin">
+    <meta property="article:section" content="Machine Learning">
+    <meta property="article:tag" content="Machine Learning">
+    <meta property="article:tag" content="Deep Learning">
+    <meta property="article:tag" content="PyTorch">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Logits and BCE with Logits Loss – Explained">
+    <meta name="twitter:description" content="Learn about logits and BCEWithLogitsLoss in PyTorch. Understand numerical stability and gradient flow with practical examples.">
+    <meta name="twitter:image" content="https://yourdomain.com/resources/bce-with-logits-loss.jpg">
+    <meta name="twitter:creator" content="@yourtwitterhandle">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-    <!-- Add Keywords and Tags for SEO -->
-    <meta name="keywords"
-        content="BCE with logits loss, BCE loss, logits, binary cross-entropy, PyTorch, machine learning, sigmoid, activation function, linear regression">
-    <meta name="tags"
-        content="machine learning, deep learning, PyTorch, neural networks, binary classification, linear regression">
+    
+    <!-- Schema.org Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Logits and BCE with Logits Loss – Explained",
+      "description": "Learn about logits and BCEWithLogitsLoss in PyTorch. Understand why it's numerically more stable than BCE loss with sigmoid, with practical code examples and mathematical explanations.",
+      "image": "https://yourdomain.com/resources/bce-with-logits-loss.jpg",
+      "datePublished": "2025-02-17T00:00:00Z",
+      "dateModified": "2025-02-17T00:00:00Z",
+      "author": {
+        "@type": "Person",
+        "name": "Mubashir Mohsin",
+        "url": "https://scholar.google.com/citations?hl=en&user=L6Esq54AAAAJ",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "American International University-Bangladesh (AIUB)"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "AI Odyssey",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://yourdomain.com/resources/logo.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://yourdomain.com/blog/logits-bce-loss-explained"
+      },
+      "keywords": "logits, BCE loss, BCEWithLogitsLoss, PyTorch, machine learning, binary classification, sigmoid, neural networks",
+      "articleSection": "Machine Learning",
+      "proficiencyLevel": "Beginner",
+      "inLanguage": "en-US"
+    }
+    </script>
 </head>
 
 <style>
@@ -70,7 +137,7 @@
         <div class="blog-content">
             <!-- Blog Post Banner-->
             <div class="banner-img">
-                <img src="resources/bce-with-logits-loss.jpg" alt="Author Photo">
+                <img src="resources/bce-with-logits-loss.jpg" alt="Binary Cross-Entropy with Logits Loss diagram showing sigmoid activation and neural network training stability in PyTorch">
             </div>
             <h4>Mubashir Mohsin</h4>
             <div class="author-info">
